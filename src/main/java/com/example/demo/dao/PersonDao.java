@@ -1,12 +1,12 @@
 package com.example.demo.dao;
 
-import com.example.demo.model.Person;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
+import com.example.demo.model.Person;
 
 @Component
 public class PersonDao {
@@ -32,7 +32,7 @@ public class PersonDao {
     public Person updatePersonUsingId(String id, Person person) {
         Optional<Person> findPersonQuery = personRepository.findById(id);
         Person personValues = findPersonQuery.get();
-        personValues.setId(person.getId());
+        personValues.setId(id);
         personValues.setName(person.getName());
         return personRepository.save(personValues);
     }
